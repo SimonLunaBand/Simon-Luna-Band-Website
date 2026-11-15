@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMON LUNA | Official Band Website</title>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --bg-dark: #0b0c10;
+            --bg-card: #161822;
+            --text-main: #f0f2f5;
+            --text-muted: #9aa0a6;
+            --accent: #7b61ff;
+            --accent-hover: #937dff;
+            --border: #262936;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+               /* --- NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(11, 12, 16, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: var(--text-main);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle at center, #1e1b38 0%, var(--bg-dark) 75%);
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            letter-spacing: 8px;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 0.9rem 2.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: background 0.3s, transform 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* --- GENERAL SECTIONS --- */
+        section {
+            padding: 6rem 5%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        /* --- MUSIC SECTION --- */
+        .music-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            align-items: center;
+        }
+
+        .album-art {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: linear-gradient(135deg, #7b61ff, #231942);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        .album-art span {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        .album-art h3 {
+            font-size: 1.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .tracklist {
+            list-style: none;
+        }
+
+        .track-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: background 0.2s;
+            border-radius: 8px;
+        }
+
+        .track-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .track-item.active {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .streaming-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .stream-pill {
+            padding: 0.5rem 1.2rem;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: border-color 0.3s;
+        }
+
+        .stream-pill:hover {
+            border-color: var(--accent);
+        }
+
+        /* --- TOUR DATES --- */
+        .tour-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .tour-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-card);
+            padding: 1.5rem 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .tour-date {
+            font-weight: 700;
+            color: var(--accent);
+            min-width: 120px;
+        }
+
+        .tour-venue {
+            flex-grow: 1;
+        }
+
+        .tour-venue span {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-text {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* --- CONTACT / BOOKING --- */
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            .music-grid {
+                grid-template-columns: 1fr;
+            }
+            .tour-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+       <!-- HEADER -->
+    <header>
+        <a href="#" class="logo">SIMON LUNA</a>
+        <nav>
+            <ul>
+                <li><a href="#music">Music</a></li>
+                <li><a href="#updates">Releases</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Booking</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="updates">
+        <h2>Project Freedom Roadmap</h2>
+        <div class="tour-list">
+            <div class="tour-row">
+                <div class="tour-date">ALBUM 01</div>
+                <div class="tour-venue">
+                    <strong>Beneath The Storm (12 Tracks)</strong>
+                    <span>Out Now — Full storytelling debut album on streaming platforms</span>
+                </div>
+                <a href="#music" class="btn">Listen</a>
+            </div>
+            <div class="tour-row">
+                <div class="tour-date">VIDEOS</div>
+                <div class="tour-venue">
+                    <strong>Official Lyric & Music Videos</strong>
+                    <span>New visual stories releasing monthly on YouTube</span>
+                </div>
+                <a href="#music" class="btn">Watch</a>
+            </div>
+            <div class="tour-row">
+                <div class="tour-date">ALBUM 02</div>
+                <div class="tour-venue">
+                    <strong>Next Chapter in Production</strong>
+                    <span>New songs exploring resilience, reflection, and life after the storm</span>
+                </div>
+                <a href="#contact" class="btn"style="white-space: nowrap;">Stay Updated</a>
+            </div>
+        </div>
+    </section>
+
+                <li><a href="#contact">Booking</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <div class="hero">
+        <h1>SIMON LUNA</h1>
+        <p>New album "Beneath The Storm" out now on all streaming platforms.</p>
+        <a href="#music" class="btn">Listen Now</a>
+    </div>
+
+    <!-- MUSIC SECTION -->
+    <section id="music">
+        <h2>Latest Release</h2>
+        <div class="music-grid">
+                    <div style="width: 100%; aspect-ratio: 1/1; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5);">
+             <img src="cover.jpg" alt="Beneath The Storm Album Cover" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+         </div>
+
+            <div>
+                               <ul class="tracklist" id="tracklist">
+                    <li class="track-item active" onclick="selectTrack(this, '01. I Lost Everything', 'music/01-i-lost-everything.mp3')">
+                        <span>01. I Lost Everything</span>
+                        <span>3:14</span>
+                    </li>
+                    <li class="track-item" onclick="selectTrack(this, '02. Beneath The Storm', 'music/02-beneath-the-storm.mp3')">
+                        <span>02. Beneath The Storm</span>
+                        <span>4:22</span>
+                    </li>
+                    <li class="track-item" onclick="selectTrack(this, '03. Did I Really Fail', 'music/03-did-i-really-fail.mp3')">
+                        <span>03. Did I Really Fail</span>
+                        <span>4:19</span>
+                    </li>
+                    <li class="track-item" onclick="selectTrack(this, '04. My New Beginning', 'music/04-my-new-beginning.mp3')">
+                        <span>04. My New Beginning</span>
+                        <span>4:32</span>
+                    </li>
+                    <li class="track-item" onclick="selectTrack(this, '05. My Consultant', 'music/05-my-consultant.mp3')">
+                        <span>05. My Consultant</span>
+                        <span>4:28</span>
+                    </li>
+                    <li class="track-item" onclick="selectTrack(this, '06. He Gave Me Choices', 'music/06-he-gave-me-choices.mp3')">
+                        <span>06. He Gave Me Choices</span>
+                        <span>4:02</span>
+                    </li>
+                    <li class="track-item" onclick="selectTrack(this, '07. The Brainstorming', 'music/07-the-brainstorming.mp3')">
+                        <span>07. The Brainstorming</span>
+                        <span>3:54</span>
+                    </li>
+                    <li class="track-item" onclick="selectTrack(this, '08. Project Freedom', 'music/08-project-freedom.mp3')">
+                        <span>08. Project Freedom</span>
+                        <span>3:26</span>
+                    </li>
+                    <li class="track-item" onclick="selectTrack(this, '09. Why Should I Start', 'music/09-why-should-i-start.mp3')">
+                        <span>09. Why Should I Start</span>
+                        <span>3:32</span>
+                    </li>
+                    <li class="track-item" onclick="selectTrack(this, '10. My First Song', 'music/10-my-first-song.mp3')">
+                        <span>10. My First Song</span>
+                        <span>4:37</span>
+                    </li>
+                    <li class="track-item" onclick="selectTrack(this, '11. Never Give Up', 'music/11-never-give-up.mp3')">
+                        <span>11. Never Give Up</span>
+                        <span>4:03</span>
+                    </li>
+                    <li class="track-item" onclick="selectTrack(this, '12. Count Your Steps', 'music/12-count-your-steps.mp3')">
+                        <span>12. Count Your Steps</span>
+                        <span>4:09</span>
+                    </li>
+                </ul>
+
+                               <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.2rem; gap: 1rem;">
+                    <p id="now-playing" style="font-size: 0.95rem; color: var(--accent); font-weight: 600;">
+                        Now Playing: 01. I Lost Everything
+                    </p>
+                    <button type="button" onclick="playAll()" class="btn" style="padding: 0.45rem 1.2rem; font-size: 0.85rem;">
+                        ▶ Play All
+                    </button>
+                </div>
+
+                <!-- REAL AUDIO PLAYER -->
+                <audio id="audio-player" controls style="width: 100%; margin-top: 0.8rem; border-radius: 8px;">
+                    <source id="audio-source" src="music/01-i-lost-everything.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                                <div class="streaming-links">
+                    <a href="https://open.spotify.com/album/7EgS4BlNejjnH63krEVNA2" target="_blank" class="stream-pill">Spotify</a>
+                    <a href="YOUR_APPLE_MUSIC_LINK_HERE" target="_blank" class="stream-pill">Apple Music</a>
+                    <a href="https://www.youtube.com/channel/UCk9Sq0vPBa_29bBjqNyMBOQ" target="_blank" class="stream-pill">YouTube Music</a>
+                    <a href="YOUR_BANDCAMP_LINK_HERE" target="_blank" class="stream-pill">Bandcamp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tour">
+        <h2>Upcoming Shows</h2>
+        <div class="tour-list">
+            <div class="tour-row">
+                <div class="tour-date">DEC 12</div>
+                <div class="tour-venue">
+                    <strong>The Echo Lounge</strong>
+                    <span>Downtown District</span>
+                </div>
+                <a href="#contact" class="btn">Tickets</a>
+            </div>
+            <div class="tour-row">
+                <div class="tour-date">DEC 19</div>
+                <div class="tour-venue">
+                    <strong>Velvet Underground Club</strong>
+                    <span>Riverside Arena</span>
+                </div>
+                <a href="#contact" class="btn">Tickets</a>
+            </div>
+            <div class="tour-row">
+                <div class="tour-date">JAN 15</div>
+                <div class="tour-venue">
+                    <strong>Starlight Amphitheater</strong>
+                    <span>West End</span>
+                </div>
+                <a href="#contact" class="btn">Tickets</a>
+            </div>
+        </div>
+    </section>
+
+        <section id="about">
+        <h2>About Simon Luna</h2>
+        <div class="about-text" style="text-align: left; line-height: 1.8;">
+            <p style="margin-bottom: 1.2rem;">
+                <strong>Simon Luna</strong> is the musical voice of <strong>Project Freedom</strong>—a storytelling project born from profound loss, resilience, and the courage to begin again. After losing everything in 2023 and facing some of the darkest days of his life, Simon found renewed purpose in rebuilding from the ground up, transforming a bare plot of land into a thriving seven-hectare cashew orchard.
+            </p>
+            <p style="margin-bottom: 1.2rem;">
+                Guided by the quiet patience of working the land and supported by the unwavering love of his partner, Luna, Simon turned to songwriting to give voice to pain, survival, and hope. Blending soulful slow rock with expressive traditional instrumentation, his debut 12-track album, <em>Beneath The Storm</em>, chronicles every step of that journey—from despair and rebuilding to standing strong once more.
+            </p>
+            <p>
+                Through <strong>Project Freedom</strong>, Simon Luna shares honest, heartfelt songs to remind anyone walking through a storm that no failure is final, and that one brave step today can open the door to a brand-new beginning.
+            </p>
+        </div>
+    </section>
+
+
+    <section id="contact">
+        <h2>Booking & Press</h2>
+        <form onsubmit="handleForm(event)">
+            <input type="text" placeholder="Your Name / Venue" required>
+            <input type="email" placeholder="Email Address" required>
+            <textarea rows="5" placeholder="Tell us about your event or inquiry..." required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+        <p id="form-status" style="text-align: center; margin-top: 1rem; color: var(--accent);"></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Simon Luna Music. All rights reserved.</p>
+    </footer>
+
+     <script>
+        function selectTrack(element, trackName, audioFile) {
+            document.querySelectorAll('.track-item').forEach(item => item.classList.remove('active'));
+            element.classList.add('active');
+            document.getElementById('now-playing').innerText = 'Now Playing: ' + trackName;
+
+            const player = document.getElementById('audio-player');
+            const source = document.getElementById('audio-source');
+            source.src = audioFile;
+            player.load();
+            player.play();
+        }
+
+        function playAll() {
+            const firstTrack = document.querySelector('.track-item');
+            if (firstTrack) {
+                firstTrack.click();
+            }
+        }
+
+        // Automatically play the next song when the current one finishes
+        document.getElementById('audio-player').addEventListener('ended', function() {
+            const tracks = Array.from(document.querySelectorAll('.track-item'));
+            const currentIndex = tracks.findIndex(item => item.classList.contains('active'));
+            
+            if (currentIndex !== -1 && currentIndex + 1 < tracks.length) {
+                tracks[currentIndex + 1].click();
+            }
+        });
+
+        function handleForm(event) {
+            event.preventDefault();
+            document.getElementById('form-status').innerText = 'Thank you! Your message for Simon Luna has been sent.';
+            event.target.reset();
+        }
+    </script>
+
+
+</body>
+</html>
+
+
