@@ -1,23 +1,16 @@
-SIMON LUNA WEBSITE — VERSION 2.3
+SIMON LUNA WEBSITE V2.4 — SOCIAL LINKS
 
-Main heading: original panoramic simon-luna-header.webp
-Navigation: seven clickable links directly below the main image, sticky when scrolling
-Seven chapters: illustrated section banners appear with a subtle page-turn/fade as visitors scroll
-Reduced-motion preference: animations disabled; navigation still works without JavaScript
+Based directly on the approved Version 2.3 website.
 
-UPLOAD to the ROOT of the EXISTING GitHub repository on branch main:
-  index.html
-  simon-luna-header.webp
-  about-banner.webp
-  contact-banner.webp
-  framework-banner.webp
-  freedom-banner.webp
-  music-banner.webp
-  programs-banner.webp
-  releases-banner.webp
+Added six public platform links below the seven-item main navigation and again in the footer. The panoramic header, seven chapter illustrations, scrolling animations, music player, existing text, and development disclaimer are preserved.
 
-KEEP EXISTING: cover.jpg, music/ and other existing assets.
+DEPLOY:
+1. Extract this ZIP.
+2. In the GitHub repository SimonLunaBand/Simon-Luna-Band-Website, on branch main, upload the updated index.html to the repository root and commit.
+3. The nine included .webp files are the same assets as V2.3. If they already exist in your GitHub root, you DO NOT need to upload them again. They are included for completeness.
+4. Keep the existing music/ folder and cover.jpg unchanged.
+5. Wait for Netlify deployment, then check navigation, audio and all six social links.
 
-IMPORTANT: Compare with the latest GitHub index.html before replacing if you've edited it since V2.2.
-Once committed, check Netlify deploy status, music playback, all seven menu links and mobile view.
-The About, Programs and other sections retain existing text; the development notice remains in Programs.
+Note: Facebook share URL was provided by the site owner; if it later redirects unexpectedly, replace it with the canonical public Facebook page URL.
+
+This package does not publish changes to GitHub or Netlify.
