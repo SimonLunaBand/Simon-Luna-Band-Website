@@ -335,26 +335,57 @@
         nav ul { flex-wrap:wrap; justify-content:flex-end; gap:.6rem 1rem; }
         nav a { font-size:.76rem; }
         @media(max-width:768px) { .pf-card, .pf-steps article { padding:1.2rem; } }
-    </style>
+
+        /* Version 2.1: image first, clickable menu immediately below */
+        .site-banner { width:100%; background:#0b0c10; }
+        .site-banner img { display:block; width:100%; height:auto; }
+        header.site-navigation {
+            position:sticky; top:0; width:100%; z-index:1000;
+            padding:.95rem 1rem; justify-content:center;
+            background:rgba(11,12,16,.96); backdrop-filter:blur(10px);
+            border-bottom:1px solid var(--border);
+        }
+        .site-navigation nav { width:100%; }
+        .site-navigation nav ul { display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:.65rem 1.6rem; }
+        .site-navigation nav a { display:inline-block; padding:.3rem 0; }
+        .site-navigation nav a:focus-visible { outline:2px solid #b7a0ff; outline-offset:5px; border-radius:2px; }
+        section { scroll-margin-top:110px; }
+        @media(max-width:768px) {
+            header.site-navigation { position:sticky; flex-direction:row; padding:.65rem .5rem; }
+            .site-navigation nav ul { gap:.35rem .9rem; }
+            .site-navigation nav a { font-size:.7rem; letter-spacing:.3px; }
+            section { scroll-margin-top:120px; }
+        }
+    
+    /* Section illustrations: full-width, responsive, and readable on mobile */
+    .section-art { display:block; width:100%; height:auto; max-height:330px; object-fit:cover; border-radius:14px; margin:0 0 1.5rem; box-shadow:0 10px 28px rgba(0,0,0,.25); }
+    @media(max-width:650px) { .section-art { border-radius:8px; margin-bottom:1rem; } }
+</style>
 </head>
 <body>
 
-    <!-- HEADER -->
-       <!-- HEADER -->
-    <header>
-        <a href="#" class="logo">SIMON LUNA</a>
-        <nav>
+    <!-- Project Freedom panoramic banner -->
+    <div class="site-banner">
+        <img src="simon-luna-header.webp" width="2172" height="724" alt="Simon Luna and Project Freedom: a journey from storm to sunrise. One step, one song, one new beginning at a time." fetchpriority="high">
+    </div>
+
+    <!-- Accessible navigation directly below the banner -->
+    <header class="site-navigation">
+        <nav aria-label="Main navigation">
             <ul>
                 <li><a href="#music">Music</a></li>
                 <li><a href="#updates">Releases</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#freedom">Our Mission</a></li><li><a href="#framework">Framework</a></li><li><a href="#programs">Programs</a></li>
+                <li><a href="#freedom">Our Mission</a></li>
+                <li><a href="#framework">Framework</a></li>
+                <li><a href="#programs">Programs</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="updates">
+        <img class="section-art" src="releases-banner.webp" alt="Illustrated Releases section banner for Simon Luna and Project Freedom" loading="lazy" decoding="async">
         <h2>Project Freedom Roadmap</h2>
         <div class="tour-list">
             <div class="tour-row">
@@ -393,6 +424,7 @@
 
     <!-- MUSIC SECTION: local audio files require the music/ folder in the Netlify deployment -->
     <section id="music">
+        <img class="section-art" src="music-banner.webp" alt="Illustrated Music section banner for Simon Luna and Project Freedom" loading="lazy" decoding="async">
         <h2>Latest Release</h2>
         <div class="music-grid">
                     <div style="width: 100%; aspect-ratio: 1/1; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5);">
@@ -476,6 +508,7 @@
 
     <!-- PROJECT FREEDOM -->
     <section id="freedom" class="pf-section">
+        <img class="section-art" src="freedom-banner.webp" alt="Illustrated Our Mission section banner for Simon Luna and Project Freedom" loading="lazy" decoding="async">
       <p class="eyebrow">Beyond the music</p>
       <h2>Project Freedom</h2>
       <p class="pf-lead">One step, one song, one new beginning at a time.</p>
@@ -487,6 +520,7 @@
       </div>
     </section>
     <section id="framework" class="pf-section">
+        <img class="section-art" src="framework-banner.webp" alt="Illustrated Framework section banner for Simon Luna and Project Freedom" loading="lazy" decoding="async">
       <p class="eyebrow">Our development direction</p>
       <h2>Strategy &amp; Framework</h2>
       <p class="pf-note">The 2027–2036 horizon is a planning framework, not a promise that every proposed program will launch. Activities, budgets and indicators will be refined through approved annual plans.</p>
@@ -503,6 +537,7 @@
       </div>
     </section>
     <section id="programs" class="pf-section">
+        <img class="section-art" src="programs-banner.webp" alt="Illustrated Programs section banner for Simon Luna and Project Freedom" loading="lazy" decoding="async">
       <p class="eyebrow">Ideas for the future</p>
       <h2>Proposed Programs</h2>
       <p class="pf-note">These concepts are under development. They are not yet open services, grant programs or requests for donations.</p>
@@ -516,6 +551,7 @@
     </section>
 
     <section id="about">
+        <img class="section-art" src="about-banner.webp" alt="Illustrated About section banner for Simon Luna and Project Freedom" loading="lazy" decoding="async">
         <h2>About Simon Luna</h2>
         <div class="about-text" style="text-align: left; line-height: 1.8;">
             <p style="margin-bottom: 1.2rem;">
@@ -532,6 +568,7 @@
 
 
     <section id="contact">
+        <img class="section-art" src="contact-banner.webp" alt="Illustrated Contact section banner for Simon Luna and Project Freedom" loading="lazy" decoding="async">
         <h2>Connect with Simon Luna</h2>
         <div class="about-text">
             <p>Follow new music, videos, and Project Freedom updates through our official channel.</p>
