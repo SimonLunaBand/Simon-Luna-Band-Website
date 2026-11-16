@@ -1,7 +1,23 @@
-Simon Luna website V2.2 - seven section banners
+SIMON LUNA WEBSITE — VERSION 2.3
 
-Upload index.html and all seven *-banner.webp images to the ROOT of your existing GitHub repository, Simon-Luna-Band-Website (branch main).
-Keep existing simon-luna-header.webp, cover.jpg and music/ folder untouched.
-This package builds on the locally available V2.1 HTML. Verify current live changes before overwriting index.html.
-The Contact banner is cropped from the seven-banner concept sheet; other section images are full-resolution design drafts.
-Check all navigation, album playback, mobile view and the development notice after Netlify publishes.
+Main heading: original panoramic simon-luna-header.webp
+Navigation: seven clickable links directly below the main image, sticky when scrolling
+Seven chapters: illustrated section banners appear with a subtle page-turn/fade as visitors scroll
+Reduced-motion preference: animations disabled; navigation still works without JavaScript
+
+UPLOAD to the ROOT of the EXISTING GitHub repository on branch main:
+  index.html
+  simon-luna-header.webp
+  about-banner.webp
+  contact-banner.webp
+  framework-banner.webp
+  freedom-banner.webp
+  music-banner.webp
+  programs-banner.webp
+  releases-banner.webp
+
+KEEP EXISTING: cover.jpg, music/ and other existing assets.
+
+IMPORTANT: Compare with the latest GitHub index.html before replacing if you've edited it since V2.2.
+Once committed, check Netlify deploy status, music playback, all seven menu links and mobile view.
+The About, Programs and other sections retain existing text; the development notice remains in Programs.

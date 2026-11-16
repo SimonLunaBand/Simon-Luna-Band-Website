@@ -357,6 +357,19 @@
             section { scroll-margin-top:120px; }
         }
     
+    /* Version 2.3 — cinematic scroll chapters. Navigation sits flush below the hero image. */
+    .site-banner { margin:0; }
+    .site-navigation { margin-top:0; box-shadow:0 8px 24px rgba(0,0,0,.28); }
+    .site-navigation a[aria-current="location"] { color:#f5d18c; border-bottom:2px solid #d8ac61; }
+    .section-art { transform-origin:center center; backface-visibility:hidden; }
+    @media (prefers-reduced-motion: no-preference) {
+      .motion-ready .section-art { opacity:0; transform:perspective(1100px) rotateY(-12deg) translateY(34px) scale(.975); transition:opacity .85s ease, transform .95s cubic-bezier(.2,.75,.2,1); }
+      .motion-ready .section-art.in-view { opacity:1; transform:perspective(1100px) rotateY(0) translateY(0) scale(1); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior:auto; }
+      .section-art { opacity:1 !important; transform:none !important; transition:none !important; }
+    }
     /* Section illustrations: full-width, responsive, and readable on mobile */
     .section-art { display:block; width:100%; height:auto; max-height:330px; object-fit:cover; border-radius:14px; margin:0 0 1.5rem; box-shadow:0 10px 28px rgba(0,0,0,.25); }
     @media(max-width:650px) { .section-art { border-radius:8px; margin-bottom:1rem; } }
@@ -613,6 +626,37 @@
     </script>
 
 
+
+<script>
+/* Progressive enhancement: images remain visible when scripting is unavailable. */
+(function () {
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const illustrations = Array.from(document.querySelectorAll('.section-art'));
+  document.body.classList.add('motion-ready');
+  const reveal = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -4% 0px' });
+  illustrations.forEach(img => reveal.observe(img));
+  /* The menu continues to work as ordinary anchors, including with JS disabled. */
+  const links = Array.from(document.querySelectorAll('.site-navigation a[href^="#"]'));
+  const sections = links.map(link => document.getElementById(link.getAttribute('href').slice(1))).filter(Boolean);
+  const active = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      links.forEach(link => {
+        if (link.getAttribute('href') === '#' + entry.target.id) link.setAttribute('aria-current','location');
+        else link.removeAttribute('aria-current');
+      });
+    });
+  }, { rootMargin:'-20% 0px -60% 0px', threshold:0 });
+  sections.forEach(section => active.observe(section));
+})();
+</script>
 </body>
 </html>
 
